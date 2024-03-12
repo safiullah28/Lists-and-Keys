@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
 
 function App() {
+  let PSL=["KK","LQ","IU","IU"];
+  function dlt(i){
+    let total = [...PSL];
+    total.splice(i, 1);
+    PSL=[...total];
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {
+        PSL.map((element,index)=>{
+          return(
+            <div key={index}>
+            <h1><span>{index}</span>{element}</h1>
+            <button onClick={()=>{dlt(index)}}> Delete </button>
+            </div>
+          )
+        })
+      }
     </div>
   );
 }
